@@ -42,7 +42,7 @@ def main():
         captions = unicode(captions, errors='replace')
 
     content = read_captions(captions)
-    print write_captions(content, options)
+    write_captions(content, options)
 
 
 def read_captions(captions):
@@ -65,16 +65,13 @@ def read_captions(captions):
 
 def write_captions(content, options):
     if options.sami:
-        return pycaption.SAMIWriter().write(content)
-    elif options.dfxp:
-        return pycaption.DFXPWriter().write(content)
-    elif options.srt:
-        return pycaption.SRTWriter().write(content)
-    elif options.transcript:
-        return pycaption.TranscriptWriter().write(content)
-    else:
-        raise Exception(('No output specified! Use one or more of these:\n',
-                         '[--sami --dfxp --srt --transcript]'))
+        print pycaption.SAMIWriter().write(content)
+    if options.dfxp:
+        print pycaption.DFXPWriter().write(content)
+    if options.srt:
+        print pycaption.SRTWriter().write(content)
+    if options.transcript:
+        print pycaption.TranscriptWriter().write(content)
 
 
 if __name__ == '__main__':
