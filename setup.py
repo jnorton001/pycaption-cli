@@ -19,7 +19,5 @@ setup(
     install_requires = dependencies,
     packages = find_packages(),
     include_package_data=True,
-    classifiers=[
-        'Topic :: Multimedia :: Video',
-    ],
+    entry_points=dict(console_scripts=['pycaption=pycapcli.caption_converter:main']),
 )
