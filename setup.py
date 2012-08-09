@@ -16,8 +16,9 @@ setup(
     author='Joe Norton',
     author_email='joey@nortoncrew.com',
     url='https://github.com/jnorton001/pycaption-cli',
-    install_requires = dependencies,
-    packages = find_packages(),
+    install_requires=dependencies,
+    packages=find_packages(),
     include_package_data=True,
-    entry_points=dict(console_scripts=['pycaption=pycapcli.caption_converter:main']),
+    entry_points=dict(
+        console_scripts=['pycaption=pycapcli.caption_converter:main']),
 )

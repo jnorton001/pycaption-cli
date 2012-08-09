@@ -3,12 +3,13 @@ import codecs
 
 import pycaption
 
+
 def main():
     parser = optparse.OptionParser("usage: %prog [options]")
     parser.add_option("--sami",
             action='store_true',
             dest='sami',
-            help="write captions in SAMI format", 
+            help="write captions in SAMI format",
             default=False,)
     parser.add_option("--dfxp",
             action='store_true',
