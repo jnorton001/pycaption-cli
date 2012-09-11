@@ -26,6 +26,14 @@ def main():
             dest='transcript',
             help="write transcript for captions",
             default=False,)
+    parser.add_option("--scc_lang",
+            dest='lang',
+            help="choose override language for input",
+            default='',)
+    parser.add_option("--scc_offset",
+            dest='offset',
+            help="choose offset for SCC file; measured in seconds",
+            default=0)
     (options, args) = parser.parse_args()
 
     try:
@@ -41,18 +49,22 @@ def main():
         captions = open(filename, 'r').read()
         captions = unicode(captions, errors='replace')
 
-    content = read_captions(captions)
+    content = read_captions(captions, options)
     write_captions(content, options)
 
 
-def read_captions(captions):
+def read_captions(captions, options):
     scc_reader = pycaption.SCCReader()
     srt_reader = pycaption.SRTReader()
     sami_reader = pycaption.SAMIReader()
     dfxp_reader = pycaption.DFXPReader()
 
     if scc_reader.detect(captions):
-        return scc_reader.read(captions)
+        if options.lang:
+            return scc_reader.read(captions, lang=options.lang,
+                                   offset=int(options.offset))
+        else:
+            return scc_reader.read(captions, offset=int(options.offset))
     elif srt_reader.detect(captions):
         return srt_reader.read(captions)
     elif sami_reader.detect(captions):
