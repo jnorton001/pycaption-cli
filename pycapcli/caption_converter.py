@@ -18,7 +18,7 @@ def main():
             default=False,)
     parser.add_option("--scc",
             action='store_true',
-            dest='dfxp',
+            dest='scc',
             help="write captions in SCC format",
             default=False,)
     parser.add_option("--srt",
