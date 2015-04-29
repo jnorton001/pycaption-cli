@@ -16,6 +16,11 @@ def main():
             dest='dfxp',
             help="write captions in DFXP format",
             default=False,)
+    parser.add_option("--scc",
+            action='store_true',
+            dest='dfxp',
+            help="write captions in SCC format",
+            default=False,)
     parser.add_option("--srt",
             action='store_true',
             dest='srt',
@@ -41,7 +46,7 @@ def main():
     except:
         raise Exception(
         ('Expected usage: python caption_converter.py <path to caption file> ',
-        '[--sami --dfxp --srt --transcript]'))
+        '[--sami --dfxp --srt --transcript --scc]'))
 
     try:
         captions = codecs.open(filename, encoding='utf-8', mode='r').read()
@@ -76,6 +81,8 @@ def read_captions(captions, options):
 
 
 def write_captions(content, options):
+    if options.scc:
+        print pycaption.SCCWriter().write(content).encode("utf-8")
     if options.sami:
         print pycaption.SAMIWriter().write(content).encode("utf-8")
     if options.dfxp:
