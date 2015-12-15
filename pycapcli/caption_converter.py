@@ -64,7 +64,7 @@ def read_captions(captions, options):
             return scc_reader.read(captions, lang=options.lang,
                                    offset=int(options.offset))
         else:
-            return scc_reader.read(captions, offset=int(options.offset))
+            return scc_reader.read(captions, offset=float(options.offset))
     elif srt_reader.detect(captions):
         return srt_reader.read(captions)
     elif sami_reader.detect(captions):
