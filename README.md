@@ -13,7 +13,7 @@ Usage
 
 From your command line:
 
-    pycaption <path to caption file> [--sami --dfxp --srt --transcript]
+    pycaption <path to caption file> [--sami --dfxp --srt --transcript --scc]
     
 e.g.
 
@@ -26,7 +26,7 @@ Output is written to the screen. To write to a file, use something like this:
 Supported Formats
 =================
 
- - SCC (read)
+ - SCC (read/write)
  - SRT (read/write)
  - SAMI (read/write)
  - DFXP (read/write)
