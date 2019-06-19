@@ -11,7 +11,7 @@ dependencies = [
 
 setup(
     name='pycaption-cli',
-    version='0.1',
+    version='0.2',
     description='Command line caption conversion',
     author='Joe Norton',
     author_email='joey@nortoncrew.com',
