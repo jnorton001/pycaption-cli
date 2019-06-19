@@ -97,7 +97,9 @@ def write_captions(content, options):
     if options.vtt:
         print pycaption.WebVTTWriter().write(content).encode("utf-8")
     if options.transcript:
-        print pycaption.TranscriptWriter().write(content).encode("utf-8")
+        # import TranscriptWriter only if necessary, since it requires additional dependencies
+        from pycaption.transcript import TranscriptWriter
+        print TranscriptWriter().write(content).encode("utf-8")
 
 
 if __name__ == '__main__':
