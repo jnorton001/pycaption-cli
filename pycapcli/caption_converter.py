@@ -21,6 +21,11 @@ def main():
             dest='srt',
             help="write captions in SRT format",
             default=False,)
+    parser.add_option("--vtt",
+            action='store_true',
+            dest='vtt',
+            help="write captions in WebVTT format",
+            default=False,)
     parser.add_option("--transcript",
             action='store_true',
             dest='transcript',
@@ -41,7 +46,7 @@ def main():
     except:
         raise Exception(
         ('Expected usage: python caption_converter.py <path to caption file> ',
-        '[--sami --dfxp --srt --transcript]'))
+        '[--sami --dfxp --srt --vtt --transcript]'))
 
     try:
         captions = codecs.open(filename, encoding='utf-8', mode='r').read()
@@ -82,6 +87,8 @@ def write_captions(content, options):
         print pycaption.DFXPWriter().write(content).encode("utf-8")
     if options.srt:
         print pycaption.SRTWriter().write(content).encode("utf-8")
+    if options.vtt:
+        print pycaption.WebVTTWriter().write(content).encode("utf-8")
     if options.transcript:
         print pycaption.TranscriptWriter().write(content).encode("utf-8")
 
