@@ -87,19 +87,19 @@ def read_captions(captions, options):
 
 def write_captions(content, options):
     if options.scc:
-        print pycaption.SCCWriter().write(content).encode("utf-8")
+        print(pycaption.SCCWriter().write(content))
     if options.sami:
-        print pycaption.SAMIWriter().write(content).encode("utf-8")
+        print(pycaption.SAMIWriter().write(content))
     if options.dfxp:
-        print pycaption.DFXPWriter().write(content).encode("utf-8")
+        print(pycaption.DFXPWriter().write(content))
     if options.srt:
-        print pycaption.SRTWriter().write(content).encode("utf-8")
+        print(pycaption.SRTWriter().write(content))
     if options.vtt:
-        print pycaption.WebVTTWriter().write(content).encode("utf-8")
+        print(pycaption.WebVTTWriter().write(content))
     if options.transcript:
         # import TranscriptWriter only if necessary, since it requires additional dependencies
         from pycaption.transcript import TranscriptWriter
-        print TranscriptWriter().write(content).encode("utf-8")
+        print(TranscriptWriter().write(content))
 
 
 if __name__ == '__main__':
